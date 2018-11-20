@@ -1,9 +1,8 @@
 package com.example.alienware.primerproyecto;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.v4.app.Fragment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -59,8 +58,16 @@ public class PantallaInicio extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_settings)
+        {
             return true;
+        }
+        else if (id == R.id.boton_buscar)
+        {
+            String busqueda = "Buscaste esta";
+            Intent intent = new Intent(PantallaInicio.this, Activity_Busqueda.class);
+            intent.putExtra("busqueda", busqueda);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -68,8 +75,10 @@ public class PantallaInicio extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(MenuItem item)
+    {
         // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
@@ -84,6 +93,11 @@ public class PantallaInicio extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        }
+
+        if(selecfragment == true)
+        {
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment,mifragment).commit();
         }
 
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);
