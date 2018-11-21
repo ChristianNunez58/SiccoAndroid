@@ -1,6 +1,7 @@
 package com.example.alienware.primerproyecto;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,6 +41,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        buttonRegistrarUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToActivity(RegistrarUsuarioActivity.class);
+            }
+        });
     }
 
     public void loadWidgets() {
@@ -48,8 +56,19 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonRegistrarUsuario = findViewById(R.id.buttonRegistrarUsuario);
         switchRecordar = findViewById(R.id.switchRecordarPassword);
+
+
     }
 
+    public String convertHashMap (HashMap hashMap) {
+        Gson gson = new Gson();
+        String hashmapString = gson.toJson(hashMap);
+    }
+
+    public void saveOnSharedPreferences (String data) {
+        SharedPreferences preferences = getSharedPreferences("usuario",MODE_PRIVATE);
+        preferences.edit().putString("hashString",data).apply();
+    }
     public void loadUsers() {
         user1.put("usuario","aa");
         user1.put("password","4321");
