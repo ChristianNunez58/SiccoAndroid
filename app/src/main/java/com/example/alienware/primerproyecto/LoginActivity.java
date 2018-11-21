@@ -1,9 +1,6 @@
 package com.example.alienware.primerproyecto;
 
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,119 +9,78 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    SharedPreferences mySharedPreferences;
-
-    EditText editTextUsuario;
-    EditText editTextPassword;
-    Button buttonRegistrarUsuario;
-    Button buttonLogin;
+    EditText editTextUsuario, editTextPassword;
+    Button buttonLogin, buttonRegistrarUsuario;
     Switch switchRecordar;
-    RequestQueue requestQueue;
-    static final String URL = "http://www.sicconviene.com/loginAndroid.php";
-    StringRequest request;
 
+    HashMap<String,String> user1 = new HashMap<String,String>();
+    HashMap<String,String> user2 = new HashMap<String,String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mySharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
-
         setContentView(R.layout.activity_login);
-        LoadWidgets();
-        requestQueue = Volley.newRequestQueue(this);
 
+        loadWidgets();
+        loadUsers();
         buttonLogin.setOnClickListener(new View.OnClickListener() {
-
-            String usuario = editTextUsuario.getText().toString();
-            String password = editTextPassword.getText().toString();
             @Override
-            public void onClick(View view) {
-
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            if (jsonObject.names().get(0).equals("success")) {
-
-                                Toast.makeText(getApplicationContext(),jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
-                                saveUserOnSharedPreferences(usuario,password);
-                                goToActivity(PantallaInicio.class);
-
-                            } else {
-                                Toast.makeText(getApplicationContext(),jsonObject.getString("error"),Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> hashMap = new HashMap<String, String>();
-                        hashMap.put("usuario",usuario);
-                        hashMap.put("password",password);
-                        return hashMap;
-                    }
-                };
-
-                requestQueue.add(request);
+            public void onClick(View v) {
+                boolean isCorrect = checkUser(editTextUsuario.getText().toString(),editTextPassword.getText().toString());
+                if (isCorrect) {
+                    goToActivity(PantallaInicio.class);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Credencial invalida, por favor ingresa nuevamente.",Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
-        buttonRegistrarUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goToActivity(RegistrarUsuarioActivity.class);
-            }
-        });
-
     }
 
-    public void LoadWidgets() {
-        editTextUsuario = (EditText) findViewById(R.id.editTextUsuario);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        buttonLogin = (Button) findViewById(R.id.buttonLogin);
-        buttonRegistrarUsuario = (Button) findViewById(R.id.buttonRegistrarUsuario);
+    public void loadWidgets() {
+        editTextUsuario = findViewById(R.id.editTextUsuario);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        buttonLogin = findViewById(R.id.buttonLogin);
+        buttonRegistrarUsuario = findViewById(R.id.buttonRegistrarUsuario);
+        switchRecordar = findViewById(R.id.switchRecordarPassword);
     }
 
+    public void loadUsers() {
+        user1.put("usuario","aa");
+        user1.put("password","4321");
+        user1.put("nombre","Elian");
+        user1.put("apellido_paterno","Cruz");
+        user1.put("apellido_materno","Esquivel");
+        user1.put("Especialidad","1");
+        user1.put("semestre","5");
+        user1.put("no_control","1");
+        user1.put("edad","17");
+        user1.put("correo","aa@gmail.com");
 
-
-    public void saveUserOnSharedPreferences(String usuario, String password) {
-        if(switchRecordar.isChecked()) {
-            SharedPreferences.Editor myEditor = mySharedPreferences.edit();
-            myEditor.putString("usuario",usuario);
-            myEditor.putString("password",password);
-            myEditor.commit();
-            myEditor.apply();
-        }
+        user2.put("usuario","lalupis");
+        user2.put("password","1234");
+        user2.put("nombre","Lupita");
+        user2.put("apellido_paterno","Solorio");
+        user2.put("apellido_materno","Duran");
+        user2.put("Especialidad","1");
+        user2.put("semestre","5");
+        user2.put("no_control","555");
+        user2.put("edad","15");
+        user2.put("correo","lupita1112tec@gmail.com");
     }
 
-    public void goToActivity(Class activity) {
+    public boolean checkUser(String usuario, String password) {
+        if (usuario.equals(user1.get("usuario"))&&password.equals(user1.get("password"))) { return true; }
+        else if (usuario.equals(user2.get("usuario"))&&password.equals(user2.get("password"))) { return true; }
+        else { return false; }
+    }
+
+    public void goToActivity (Class activity) {
         Intent intent = new Intent(this,activity);
         startActivity(intent);
     }
