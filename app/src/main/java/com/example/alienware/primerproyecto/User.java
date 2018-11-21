@@ -2,6 +2,10 @@ package com.example.alienware.primerproyecto;
 
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
@@ -55,5 +59,9 @@ public class User {
         String jsonString = "JSON string.";
         HashMap<String,String> hashMap = new Gson().fromJson(jsonString, new TypeToken<HashMap<String,String>>(){}.getType());
         return hashMap;
+    }
+
+    public void saveOnSharedPreferences() {
+
     }
 }

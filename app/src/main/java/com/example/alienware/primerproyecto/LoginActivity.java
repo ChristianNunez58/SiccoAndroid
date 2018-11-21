@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -63,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
     public String convertHashMap (HashMap hashMap) {
         Gson gson = new Gson();
         String hashmapString = gson.toJson(hashMap);
+
     }
 
     public void saveOnSharedPreferences (String data) {
