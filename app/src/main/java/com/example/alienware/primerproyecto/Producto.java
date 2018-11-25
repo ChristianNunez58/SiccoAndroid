@@ -3,12 +3,11 @@ package com.example.alienware.primerproyecto;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class RegistrarUsuarioActivity extends AppCompatActivity {
+public class Producto extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registrar_usuario);
-
+        setContentView(R.layout.activity_producto);
     }
 }

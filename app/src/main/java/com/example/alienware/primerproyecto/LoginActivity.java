@@ -1,7 +1,5 @@
 package com.example.alienware.primerproyecto;
 
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -12,124 +10,98 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    SharedPreferences mySharedPreferences;
-
-    EditText editTextUsuario;
-    EditText editTextPassword;
-    Button buttonRegistrarUsuario;
-    Button buttonLogin;
+    EditText editTextUsuario, editTextPassword;
+    Button buttonLogin, buttonRegistrarUsuario;
     Switch switchRecordar;
-    RequestQueue requestQueue;
-    static final String URL = "http://www.sicconviene.com/loginAndroid.php";
-    StringRequest request;
 
+    String url = "http://www.sicconviene.com/loginAndroid2.php";
+    Map<String, String> params = new HashMap<String,String>();
+    String json = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        Intent intent = new Intent(LoginActivity.this, PantallaInicio.class);
-        startActivity(intent);
-
         super.onCreate(savedInstanceState);
-
-        mySharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
-
         setContentView(R.layout.activity_login);
-        LoadWidgets();
-        requestQueue = Volley.newRequestQueue(this);
+
+        loadWidgets();
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
-
-            String usuario = editTextUsuario.getText().toString();
-            String password = editTextPassword.getText().toString();
             @Override
-            public void onClick(View view) {
-
-                request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            if (jsonObject.names().get(0).equals("success")) {
-
-                                Toast.makeText(getApplicationContext(),jsonObject.getString("success"),Toast.LENGTH_SHORT).show();
-                                saveUserOnSharedPreferences(usuario,password);
-                                goToActivity(PantallaInicio.class);
-
-                            } else {
-                                Toast.makeText(getApplicationContext(),jsonObject.getString("error"),Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-
-                }){
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        HashMap<String, String> hashMap = new HashMap<String, String>();
-                        hashMap.put("usuario",usuario);
-                        hashMap.put("password",password);
-                        return hashMap;
-                    }
-                };
-
-                requestQueue.add(request);
+            public void onClick(View v) {
+                loadMap(params);
+                try {
+                    JSONRequest(params);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         buttonRegistrarUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                goToActivity(RegistrarUsuarioActivity.class);
+            public void onClick(View v) {
+                Utils.goToActivity(getApplicationContext(),RegistrarUsuarioActivity.class);
             }
         });
-
     }
 
-    public void LoadWidgets() {
+    public void loadWidgets() {
         editTextUsuario = findViewById(R.id.editTextUsuario);
         editTextPassword = findViewById(R.id.editTextPassword);
-        buttonLogin =  findViewById(R.id.buttonLogin);
+        buttonLogin = findViewById(R.id.buttonLogin);
         buttonRegistrarUsuario = findViewById(R.id.buttonRegistrarUsuario);
+        switchRecordar = findViewById(R.id.switchRecordarPassword);
     }
 
-
-
-    public void saveUserOnSharedPreferences(String usuario, String password) {
-        if(switchRecordar.isChecked()) {
-            SharedPreferences.Editor myEditor = mySharedPreferences.edit();
-            myEditor.putString("usuario",usuario);
-            myEditor.putString("password",password);
-            myEditor.commit();
-            myEditor.apply();
-        }
+    public void loadMap(Map<String,String> map) {
+        String usuario = editTextUsuario.getText().toString();
+        String password = editTextUsuario.getText().toString();
+        map.put("usuario",usuario);
+        map.put("password",password);
     }
 
-    public void goToActivity(Class activity) {
-        Intent intent = new Intent(this,activity);
-        startActivity(intent);
+    public void JSONRequest(Map<String,String>map) throws JSONException {
+        json = Utils.convertMapToJSONOString(map);
+        JSONObject jsonBody = new JSONObject(json);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest (Request.Method.GET, url, jsonBody, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if (response.names().get(0).equals("success")) {
+                        Toast.makeText(getApplicationContext(),response.getString("success"),Toast.LENGTH_SHORT).show();
+                        Utils.saveOnSharedPreferences(getApplicationContext(),json,switchRecordar.isChecked());
+                        Utils.goToActivity(getApplicationContext(),PantallaInicio.class);
+                    } else {
+                        Toast.makeText(getApplicationContext(),response.getString("error"),Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
+        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 }

@@ -15,7 +15,11 @@
             android:name=".PantallaInicio"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegistrarUsuarioActivity" />
+        <activity
+            android:theme="@style/SplashScreen"
+            android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +39,8 @@
             android:label="@string/title_activity_registro__articulo"
             android:theme="@style/AppTheme" />
         <activity android:name=".Vendedor"></activity>
+        <activity android:name=".Usuario" />
+        <activity android:name=".Producto"></activity>
     </application>
 
 </manifest>
