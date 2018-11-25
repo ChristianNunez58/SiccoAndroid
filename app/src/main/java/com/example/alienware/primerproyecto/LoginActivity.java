@@ -41,6 +41,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Intent intent = new Intent(LoginActivity.this, PantallaInicio.class);
+        startActivity(intent);
+
         super.onCreate(savedInstanceState);
 
         mySharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
@@ -106,10 +110,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void LoadWidgets() {
-        editTextUsuario = (EditText) findViewById(R.id.editTextUsuario);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        buttonLogin = (Button) findViewById(R.id.buttonLogin);
-        buttonRegistrarUsuario = (Button) findViewById(R.id.buttonRegistrarUsuario);
+        editTextUsuario = findViewById(R.id.editTextUsuario);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        buttonLogin =  findViewById(R.id.buttonLogin);
+        buttonRegistrarUsuario = findViewById(R.id.buttonRegistrarUsuario);
     }
 
 

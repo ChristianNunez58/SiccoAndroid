@@ -2,7 +2,6 @@ package com.example.alienware.primerproyecto;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,7 +20,6 @@ public class PantallaInicio extends AppCompatActivity
         setContentView(R.layout.activity_pantalla_inicio);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -64,9 +62,9 @@ public class PantallaInicio extends AppCompatActivity
         }
         else if (id == R.id.boton_buscar)
         {
-            String busqueda = "Buscaste esta";
-            Intent intent = new Intent(PantallaInicio.this, Activity_Busqueda.class);
-            intent.putExtra("busqueda", busqueda);
+            String busqueda = "jaja";
+            Intent intent = new Intent(PantallaInicio.this, Activity_Buscar.class);
+            intent.putExtra("busqueda",busqueda);
             startActivity(intent);
         }
 
@@ -81,23 +79,21 @@ public class PantallaInicio extends AppCompatActivity
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-
-        if(selecfragment == true)
+        if (id == R.id.pantallausuario)
         {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_fragment,mifragment).commit();
+            // Handle the camera action
+        }
+        else if (id == R.id.pantalla_mis_articulos)
+        {
+            String usuario = "Celic";
+            Intent intent = new Intent(PantallaInicio.this, Activity_misArticulos.class);
+            intent.putExtra("usuario",usuario);
+            startActivity(intent);
+        }
+        else if (id == R.id.pantalla_categorias)
+        {
+          Intent intent = new Intent(PantallaInicio.this, Activity_Categorias.class);
+          startActivity(intent);
         }
 
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);

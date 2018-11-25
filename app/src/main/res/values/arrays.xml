@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categoria">
+        <item>Artes</item>
+        <item>Ciencias</item>
+        <item>Cursos</item>
+        <item>Matematicas</item>
+        <item>Papeleria</item>
+        <item>Otros</item>
+    </string-array>
+    <string-array name="tipo">
+        <item>Producto</item>
+        <item>Servicio</item>
+    </string-array>
+</resources>

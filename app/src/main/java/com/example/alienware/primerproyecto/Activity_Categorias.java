@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class Categorias extends AppCompatActivity {
+public class Activity_Categorias extends AppCompatActivity {
 
     private ImageView artes;
     private ImageView ciencias;
@@ -14,10 +14,12 @@ public class Categorias extends AppCompatActivity {
     private ImageView matematicas;
     private ImageView papeleria;
     private ImageView otros;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categorias);
+        setContentView(R.layout.layout__categorias);
+
         artes = findViewById(R.id.artes);
         ciencias = findViewById(R.id.ciencias);
         cursos = findViewById(R.id.cursos);
@@ -55,18 +57,16 @@ public class Categorias extends AppCompatActivity {
                 goToActivity("5");
             }
         });
-
         otros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 goToActivity("6");
             }
         });
-
     }
 
     public void goToActivity(String categoria) {
-        Intent intent = new Intent(Categorias.this, Activity_lista_Buscar.class);
+        Intent intent = new Intent(Activity_Categorias.this, Activity_lista_Buscar.class);
         intent.putExtra("entrada",1);
         intent.putExtra("categoria",categoria);
         startActivity(intent);

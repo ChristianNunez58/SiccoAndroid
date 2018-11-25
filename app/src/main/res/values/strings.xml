@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PrimerProyecto</string>
+    <string name="app_name">SICCO</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="Nombre_Usuario">Nombre de usuario</string>
@@ -10,4 +10,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_mis_articulos">Mis articulos</string>
+    <string name="title_activity__registro_articulo">Registro articulo</string>
+    <string name="title_activity_registro__articulo">Registro_Articulo</string>
 </resources>
