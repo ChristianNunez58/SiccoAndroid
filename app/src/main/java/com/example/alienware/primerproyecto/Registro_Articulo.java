@@ -23,7 +23,6 @@ public class Registro_Articulo extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
