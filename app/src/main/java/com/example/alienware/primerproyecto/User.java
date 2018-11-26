@@ -2,11 +2,14 @@ package com.example.alienware.primerproyecto;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class User extends Activity {
     int count = 0, id;
@@ -52,42 +55,6 @@ public class User extends Activity {
             this.password = null;
             this.correo = null;
         }
-
     }
-
-    public void saveOnPreferences(HashMap<String, String> map) {
-        String jsonString = convertToJSONString(map);
-        SharedPreferences sharedPreferences = getSharedPreferences("saveData", MODE_PRIVATE);
-        sharedPreferences.edit().putString("newData", jsonString).apply();
-    }
-
-    public String convertToJSONString(HashMap<String, String> map) {
-        Gson gson = new Gson();
-        String result = gson.toJson(map);
-        return result;
-    }
-
-    public boolean checkUser () {
-        boolean isRight = true;
-        return isRight;
-    }
-/*    public HashMap<String, String> getFromSharedPreferences(HashMap<String, String> queryMap) {
-        SharedPreferences sharedPreferences = getSharedPreferences("getUser", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String jsonString = sharedPreferences.getString("saveUser", "oops");
-        java.lang.reflect.Type type = new TypeToken<HashMap<String, String>>() {
-        }.getType();
-        HashMap<String, String> mapFromSH = gson.fromJson(jsonString, type);
-
-        HashMap<String, String> resultMap = null;
-
-        String value, mapKey;
-        for (int i = 0; i < queryMap.size() + 1; i++) {
-            mapKey = queryMap.get(i);
-            value = mapFromSH.get(mapKey);
-            resultMap.put(mapKey, value);
-        }
-        return resultMap;
-    }*/
 }
 

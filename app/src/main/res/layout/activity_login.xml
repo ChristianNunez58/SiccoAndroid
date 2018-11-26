@@ -92,9 +92,9 @@
     <Button
         android:id="@+id/buttonRegistrarUsuario"
         android:layout_width="152dp"
-        android:layout_height="wrap_content"
-        android:text="Unirse a SICCO"
+        android:layout_height="45dp"
         android:background="@color/colorAccent"
+        android:text="Unirse a SICCO"
         android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonLogin"
