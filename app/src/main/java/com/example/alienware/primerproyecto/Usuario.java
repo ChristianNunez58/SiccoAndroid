@@ -17,10 +17,10 @@ public class Usuario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuario);
+        setContentView(R.layout.activity_login);
 
-        Spinner spnSemestre = findViewById(R.id.spnSemestre);
-        Spinner spnEspecialidad = findViewById(R.id.spnEspecialidad);
+        Spinner spnSemestre = findViewById(R.id.spinnerSemestre);
+        Spinner spnEspecialidad = findViewById(R.id.spinnerEspecialidad);
 
         ArrayList<String> ListaSemestre = new ArrayList<>();
         ArrayList<String> ListaEspecialidad = new ArrayList<>();

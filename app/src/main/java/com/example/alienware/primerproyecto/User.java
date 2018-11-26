@@ -34,7 +34,6 @@ public class User extends Activity {
             this.categoria = null;
             this.tipo = null;
             this.descripcion = null;
-            this.imagen = null;
         } else {
             this.nombreArticulo = map.get("nombre");
             this.precio = map.get("precio");
@@ -59,15 +58,18 @@ public class User extends Activity {
     public void saveOnPreferences(HashMap<String, String> map) {
         String jsonString = convertToJSONString(map);
         SharedPreferences sharedPreferences = getSharedPreferences("saveData", MODE_PRIVATE);
-        sharedPreferences.edit().putString("newData", jsonString);
-        sharedPreferences.edit().commit();
-        sharedPreferences.edit().apply();
+        sharedPreferences.edit().putString("newData", jsonString).apply();
     }
 
     public String convertToJSONString(HashMap<String, String> map) {
         Gson gson = new Gson();
         String result = gson.toJson(map);
         return result;
+    }
+
+    public boolean checkUser () {
+        boolean isRight = true;
+        return isRight;
     }
 /*    public HashMap<String, String> getFromSharedPreferences(HashMap<String, String> queryMap) {
         SharedPreferences sharedPreferences = getSharedPreferences("getUser", MODE_PRIVATE);
@@ -88,3 +90,4 @@ public class User extends Activity {
         return resultMap;
     }*/
 }
+
