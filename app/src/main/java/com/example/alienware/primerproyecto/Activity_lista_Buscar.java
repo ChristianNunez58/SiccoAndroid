@@ -74,7 +74,7 @@ public class Activity_lista_Buscar extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parnt, View view, int position, long id)
             {
-                Intent intent = new Intent(Activity_lista_Buscar.this, Vendedor.class);
+                Intent intent = new Intent(Activity_lista_Buscar.this, Producto .class);
                 startActivity(intent);
 
             }

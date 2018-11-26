@@ -30,7 +30,6 @@ public class Activity_Buscar extends AppCompatActivity {
                     intent.putExtra("entrada",2);
                     intent.putExtra("busqueda", labusqueda);
                     startActivity(intent);
-
                 }
                 return false;
             }
