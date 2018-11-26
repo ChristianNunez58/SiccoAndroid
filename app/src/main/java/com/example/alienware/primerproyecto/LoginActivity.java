@@ -32,9 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     Button buttonLogin, buttonRegistrarUsuario;
     Switch switchRecordar;
 
-    String url = "http://www.sicconviene.com/loginAndroid2.php";
     Map<String, String> params = new HashMap<String,String>();
-    String json = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,15 +42,12 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         loadWidgets();
 
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadMap(params);
-                try {
-                    JSONRequest(params);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
             }
         });
 
@@ -79,31 +74,11 @@ public class LoginActivity extends AppCompatActivity {
         map.put("password",password);
     }
 
-    public void JSONRequest(Map<String,String>map) throws JSONException {
-        json = Utils.convertMapToJSONOString(map);
-        JSONObject jsonBody = new JSONObject(json);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest (Request.Method.GET, url, jsonBody, new Response.Listener<JSONObject>() {
+    public void uploadDefaultUsers() {
+        boolean firstTime = getSharedPreferences("preferences",MODE_PRIVATE).getBoolean("firstrun",true);
 
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    if (response.names().get(0).equals("success")) {
-                        Toast.makeText(getApplicationContext(),response.getString("success"),Toast.LENGTH_SHORT).show();
-                        Utils.saveOnSharedPreferences(getApplicationContext(),json,switchRecordar.isChecked());
-                        Utils.goToActivity(getApplicationContext(),PantallaInicio.class);
-                    } else {
-                        Toast.makeText(getApplicationContext(),response.getString("error"),Toast.LENGTH_SHORT).show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
-            }
-        });
-        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+        if (firstTime) {
+            //aqui va codigo para login, ahorita me lo aviento.
+        }
     }
 }
