@@ -11,6 +11,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_mis_articulos">Mis articulos</string>
-    <string name="title_activity__registro_articulo">Registro articulo</string>
-    <string name="title_activity_registro__articulo">Registro_Articulo</string>
+    <string name="title_activity__registro_articulo">Registrar articulo</string>
+    <string name="title_activity_registro__articulo">Registar articulo</string>
 </resources>
