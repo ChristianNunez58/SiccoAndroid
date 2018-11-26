@@ -58,7 +58,8 @@ public class PantallaInicio extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings)
         {
-            return true;
+            Intent intent = new Intent(PantallaInicio.this, LoginActivity.class);
+            startActivity(intent);
         }
         else if (id == R.id.boton_buscar)
         {
@@ -81,7 +82,8 @@ public class PantallaInicio extends AppCompatActivity
 
         if (id == R.id.pantallausuario)
         {
-            // Handle the camera action
+            Intent intent = new Intent(PantallaInicio.this, Activity_Usuario.class);
+            startActivity(intent);
         }
         else if (id == R.id.pantalla_mis_articulos)
         {

@@ -1,9 +1,8 @@
 package com.example.alienware.primerproyecto;
 
+import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,13 +11,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Usuario extends AppCompatActivity {
+public class Activity_Usuario extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuario);
-
+        setContentView(R.layout.activity__usuario);
         Spinner spnSemestre = findViewById(R.id.spnSemestre);
         Spinner spnEspecialidad = findViewById(R.id.spnEspecialidad);
 
@@ -50,28 +48,28 @@ public class Usuario extends AppCompatActivity {
         spnEspecialidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Usuario.this, "Seleccionado" +
+                Toast.makeText(Activity_Usuario.this, "Seleccionado" +
                         String.valueOf(parent.getAdapter().getItem(position)), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(Usuario.this, "Nada",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_Usuario.this, "Nada",Toast.LENGTH_SHORT).show();
             }
         });
 
         spnSemestre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(Usuario.this, "Seleccionado" +
+                Toast.makeText(Activity_Usuario.this, "Seleccionado" +
                         String.valueOf(parent.getAdapter().getItem(position)), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(Usuario.this, "Nada",Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_Usuario.this, "Nada",Toast.LENGTH_SHORT).show();
             }
         });
-        }
+    }
 
 }

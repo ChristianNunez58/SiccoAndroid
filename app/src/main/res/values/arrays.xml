@@ -12,4 +12,18 @@
         <item>Producto</item>
         <item>Servicio</item>
     </string-array>
+    <string-array name="especialidad">
+        <item>Programacion</item>
+        <item>Electronica</item>
+        <item>Logistica</item>
+        <item>Administracion</item>
+    </string-array>
+    <string-array name="semestre">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
 </resources>
