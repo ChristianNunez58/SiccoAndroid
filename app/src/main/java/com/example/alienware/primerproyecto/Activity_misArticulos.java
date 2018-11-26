@@ -60,6 +60,7 @@ public class Activity_misArticulos extends AppCompatActivity {
             imagenes[contador] = R.drawable.ic_baseline_category_24px;
             contador++;
         }
+
         /*datosProducto[0][0] = "Hojas blancas";
         datosProducto[0][1] = "1";
         imagenes[0] = R.drawable.img_4;*/
