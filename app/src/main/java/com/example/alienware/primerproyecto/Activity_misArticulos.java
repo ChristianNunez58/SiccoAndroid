@@ -49,8 +49,9 @@ public class Activity_misArticulos extends AppCompatActivity {
         String[][] datosProducto = new String[limite][2];
         int[] imagenes = new int[limite];
 
+
         //El ciclo en donde se llenara la matriz y vector
-        while (contador < limite)
+        /*while (contador < limite)
         {
             //Aqui se remplaza el nombre del producto
             datosProducto[contador][0] = usuario;
@@ -59,7 +60,11 @@ public class Activity_misArticulos extends AppCompatActivity {
             //Aqui la respectiva imagen
             imagenes[contador] = R.drawable.ic_baseline_category_24px;
             contador++;
-        }
+        }*/
+
+        datosProducto[0][0] = "Carpeta morada de martha";
+        datosProducto[0][1] = "15";
+        imagenes[0] = R.drawable.img_2;
 
         /*datosProducto[0][0] = "Hojas blancas";
         datosProducto[0][1] = "1";

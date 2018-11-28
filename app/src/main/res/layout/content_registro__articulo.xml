@@ -15,16 +15,17 @@
 
 
         <ImageView
-            android:id="@+id/imagen_articulo_resgistraarticulo"
+            android:id="@+id/imagen_ImagenArticulo_resgistraarticulo"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_menu_user" />
+            app:srcCompat="@android:drawable/ic_menu_camera" />
         <ImageButton
             android:id="@+id/boton_examinarimagen_registrarticulo"
             android:layout_width="match_parent"
             android:background="@color/colorPrimary"
             android:layout_height="40dp"
+            android:onClick="SeleccionarImagen"
             android:src="@android:drawable/ic_menu_gallery" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,24 +78,29 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <EditText
+                    android:id="@+id/editTextNombreArticulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"/>
                 <EditText
+                    android:id="@+id/editTextPrecioArticulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"/>
                 <Spinner
+                    android:id="@+id/spinnerCategoriaArticulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/categoria"
                     android:layout_marginRight="15dp"/>
                 <Spinner
+                    android:id="@+id/spinnerTipoArticulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:entries="@array/tipo"
                     android:layout_marginRight="15dp"/>
                 <EditText
+                    android:id="@+id/editTextDescripcionArticulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"

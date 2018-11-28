@@ -1,6 +1,7 @@
 package com.example.alienware.primerproyecto;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,8 @@ public class Activity_lista_Buscar extends AppCompatActivity {
     //El limite de objetos que coiciden con la busqueda
     int limite = 0;
     String labusqueda;
-
+    SharedPreferences sharedPreferences = getSharedPreferences("getArticulo",MODE_PRIVATE);
+    String articulo = sharedPreferences.getString("nombreArticulo","");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +52,11 @@ public class Activity_lista_Buscar extends AppCompatActivity {
                 break;
                 case 2:
                     labusqueda = bundle.getString("busqueda");
-                    if (labusqueda=="hoja")
+                    if (labusqueda.equals("hoja"))
                     {
                         limite = 3;
-                    } else if (labusqueda == "")
+                    }
+                    else if (labusqueda.equals(""))
                     {
                         limite = 0;
                     }
