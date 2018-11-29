@@ -23,7 +23,7 @@ public class Registro_Articulo extends AppCompatActivity {
     ImageView imagen;
     EditText editTextNombreArticulo, editTextPrecio, editTextDescripcion;
     Spinner spinnerTipo, spinnerCategoria;
-    Button buttonImage;
+    ImageButton buttonImage;
     HashMap<String,String> nuevoArticulo=new HashMap<>();
 
     Uri path;
@@ -70,6 +70,7 @@ public class Registro_Articulo extends AppCompatActivity {
         editTextNombreArticulo = findViewById(R.id.editTextNombreArticulo);
         editTextPrecio = findViewById(R.id.editTextPrecioArticulo);
         editTextDescripcion = findViewById(R.id.editTextDescripcionArticulo);
+        buttonImage = findViewById(R.id.boton_examinarimagen_registrarticulo);
     }
 
     public void loadMap() {
@@ -82,7 +83,7 @@ public class Registro_Articulo extends AppCompatActivity {
     }
 
     public void sharedpreferencesarticulo(){
-        SharedPreferences sharedPreferences = getSharedPreferences("nvoarticulo",MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("articulo",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("nombreArticulo",nuevoArticulo.get("nombreArticulo"));
         editor.putString("precio",nuevoArticulo.get("precioarticulo"));

@@ -16,8 +16,6 @@ public class Activity_lista_Buscar extends AppCompatActivity {
     //El limite de objetos que coiciden con la busqueda
     int limite = 0;
     String labusqueda;
-    SharedPreferences sharedPreferences = getSharedPreferences("getArticulo",MODE_PRIVATE);
-    String articulo = sharedPreferences.getString("nombreArticulo","");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +106,7 @@ public class Activity_lista_Buscar extends AppCompatActivity {
                 imagenes[3] = R.drawable.img_4;
                 break;
             case "":
+
                 break;
         }
 
