@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity_lista_Buscar">
-
+    tools:context=".Lista_articulos">
     <ListView
         android:id="@+id/listaarticulos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
+
 </android.support.constraint.ConstraintLayout>

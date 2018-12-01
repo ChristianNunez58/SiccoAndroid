@@ -1,6 +1,7 @@
 package com.example.alienware.primerproyecto;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,10 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class PantallaInicio extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +61,13 @@ public class PantallaInicio extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings)
         {
-            Intent intent = new Intent(PantallaInicio.this, LoginActivity.class);
+            sharedPreferences = getSharedPreferences("user",MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("guardar",false).apply();
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            //Intent intent = new Intent(PantallaInicio.this,LoginActivity.class);
             startActivity(intent);
+
         }
         else if (id == R.id.boton_buscar)
         {

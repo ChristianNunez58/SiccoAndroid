@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (switchRecordar.isChecked()) {
                         sharedPreferences.edit().putBoolean("guardar",true).apply();
                     }
-                    sharedPreferences.edit().putString("token","user").apply();
+                    sharedPreferences.edit().putString("token","admin").apply();
                     Toast.makeText(getApplicationContext(),"Bienvenido "+userAdmin  .nombreUsuario,Toast.LENGTH_SHORT).show();
                     Utils.goToActivity(getApplicationContext(),PantallaInicio.class);
                 } else if (usuario.equals(newUser.nombreUsuario) && password.equals(newUser.password)){

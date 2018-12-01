@@ -35,10 +35,9 @@ public class AdaptadorBusqueda extends BaseAdapter
         TextView nombreProducto = vista.findViewById(R.id.textNombreProducto);
         TextView precioProducto = vista.findViewById(R.id.textPrecioProducto);
         ImageView imagen = vista.findViewById(R.id.imagenproducto);
-
         nombreProducto.setText(datos[i][0]);
         precioProducto.setText("$" + datos[i][1]);
-        imagen.setImageResource(imagenes[i]);
+        imagen.setImageResource( imagenes[i]);
 
         return vista;
     }

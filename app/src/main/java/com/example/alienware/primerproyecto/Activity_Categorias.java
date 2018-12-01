@@ -66,7 +66,7 @@ public class Activity_Categorias extends AppCompatActivity {
     }
 
     public void goToActivity(String categoria) {
-        Intent intent = new Intent(Activity_Categorias.this, Activity_lista_Buscar.class);
+        Intent intent = new Intent(Activity_Categorias.this, Lista_articulos.class);
         intent.putExtra("entrada",1);
         intent.putExtra("categoria",categoria);
         startActivity(intent);

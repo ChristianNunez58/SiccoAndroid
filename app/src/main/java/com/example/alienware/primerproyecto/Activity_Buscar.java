@@ -26,7 +26,7 @@ public class Activity_Buscar extends AppCompatActivity {
                 {
                     // Perform action on key press
                     String labusqueda = busqueda.getText().toString();
-                    Intent intent = new Intent(Activity_Buscar.this, Activity_lista_Buscar.class);
+                    Intent intent = new Intent(Activity_Buscar.this, Lista_articulos.class);
                     intent.putExtra("entrada",2);
                     intent.putExtra("busqueda", labusqueda);
                     startActivity(intent);

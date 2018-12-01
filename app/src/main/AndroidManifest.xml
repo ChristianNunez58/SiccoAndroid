@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.alienware.primerproyecto">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -29,9 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrarUsuarioActivity" />
         <activity android:name=".Activity_Buscar" />
-        <activity android:name=".Activity_lista_Buscar" />
         <activity android:name=".Activity_Categorias" />
         <activity
             android:name=".Activity_misArticulos"
@@ -43,7 +41,9 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".Vendedor" />
         <activity android:name=".Producto" />
-        <activity android:name=".Activity_Usuario"></activity>
+        <activity android:name=".Activity_Usuario" />
+        <activity android:name=".Lista_articulos" />
+        <activity android:name=".Articulo"></activity>
     </application>
 
 </manifest>

@@ -10,7 +10,7 @@ import android.widget.Spinner;
 
 public class RegistrarUsuarioActivity extends AppCompatActivity {
 
-    EditText editTextNombre, editTextAP, editTextAM, editTextUsuario, editTextPassword, editTextNoControl, editTextEmail;
+    EditText editTextNombre, editTextAP, editTextAM, editTextUsuario, editTextPassword, editTextNoControl, editTextEmail, editTextEdad;
     Spinner spinnerSemestre, spinnerEspecialidad;
     Button buttonRegistrar;
     @Override
@@ -37,7 +37,8 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         spinnerEspecialidad = findViewById(R.id.spinnerEspecialidad);
         spinnerSemestre = findViewById(R.id.spinnerSemestre);
         buttonRegistrar = findViewById(R.id.buttonRegistrar);
-        editTextUsuario = findViewById(R.id.editTextUsuarioRegistro);
+        editTextUsuario = findViewById(R.id.Usuario_usuario);
+        editTextEdad = findViewById(R.id.Edad_usuario);
     }
 
     public void saveNewUser () {
@@ -49,8 +50,8 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
         editor.putString("usuarioUser",editTextUsuario.getText().toString());
         editor.putString("apellidoPatUser",editTextAP.getText().toString());
         editor.putString("apellidoMatUser",editTextAM.getText().toString());
-//        editor.putString("especialidadUser",spinnerEspecialidad.getSelectedItem().toString());
-//        editor.putString("semestreUser",spinnerSemestre.getSelectedItem().toString());
+        editor.putString("especialidadUser",spinnerEspecialidad.getSelectedItem().toString());
+        editor.putString("semestreUser",spinnerSemestre.getSelectedItem().toString());
         editor.putString("noControlUser",editTextNoControl.getText().toString());
         editor.apply();
     }

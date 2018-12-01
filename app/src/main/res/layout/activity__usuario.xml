@@ -131,41 +131,7 @@
                     android:layout_marginTop="15dp"
                     android:text="No. Control:"
                     android:textColor="@color/colorSecondaryText"/>
-                <TextView
-                    android:id="@+id/txt9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="15dp"
-                    android:text="Cambiar contraseña"
-                    android:textColor="@color/colorPrimaryText"/><!--CambiarContra-->
-                <TextView
-                    android:id="@+id/txt10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="15dp"
-                    android:text="Contraseña vieja:"
-                    android:textColor="@color/colorSecondaryText"/>
 
-                <TextView
-                    android:id="@+id/txt11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="15dp"
-                    android:text="Contraseña nueva:"
-                    android:textColor="@color/colorSecondaryText" />
-                <TextView
-                    android:id="@+id/txt12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Confirmar contraseña nueva:"
-                    android:textColor="@color/colorSecondaryText"
-                    android:layout_gravity="end"
-                    android:textAlignment="textEnd"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -204,28 +170,31 @@
                     android:text="17"
                     android:textColor="@color/colorPrimaryText"
                     android:textSize="12sp"/>
-                <Spinner
+                <EditText
                     android:id="@+id/spnEspecialidad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:height="35dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginRight="12dp"
-                    android:entries="@array/especialidad"/>
-                <Spinner
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimaryText"/>
+
+                <EditText
                     android:id="@+id/spnSemestre"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="13dp"
+                    android:layout_height="35dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorPrimaryText"
                     android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:entries="@array/semestre"/>
+                    android:layout_marginRight="12dp" />
                 <EditText
                     android:id="@+id/correoelectronico_usuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     android:layout_marginRight="12dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:ems="10"
                     android:inputType="textEmailAddress"
                     android:text="aa@gmail.com"
@@ -243,38 +212,7 @@
                     android:text="582608**********"
                     android:textSize="12sp" />
 
-                <EditText
-                    android:id="@+id/contravieja_usuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginTop="26dp"
-                    android:ems="10"
-                    android:inputType="textPassword"
-                    android:text="4321"
-                    android:textColor="@color/colorPrimaryText" />
-                <EditText
-                    android:id="@+id/contranueva_usuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:ems="10"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/colorPrimaryText"
-                    android:inputType="textPassword" />
-                <EditText
-                    android:id="@+id/confcontranueva_usuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="12dp"
-                    android:ems="10"
-                    android:layout_marginTop="5dp"
-                    android:text=""
-                    android:textColor="@color/colorPrimaryText"
-                    android:inputType="textPassword" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
